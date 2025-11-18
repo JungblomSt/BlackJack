@@ -8,12 +8,165 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        android:text="BlackJack"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_dealer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Dealer:"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/tv_dealer_card_1"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:text="DealerCard1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dealer"
+        tools:layout_editor_absoluteX="117dp" />
+
+    <TextView
+        android:id="@+id/tv_dealer_card_2"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="DealerCard2"
+        app:layout_constraintStart_toEndOf="@+id/tv_dealer_card_1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dealer" />
+
+    <TextView
+        android:id="@+id/tv_dealer_sum_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Sum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dealer_card_2" />
+
+    <TextView
+        android:id="@+id/tv_dealer_sum_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dealer_sum_text" />
+
+    <TextView
+        android:id="@+id/tv_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Player:"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dealer_sum_num" />
+
+    <TextView
+        android:id="@+id/tv_player_card_1"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:text="DealerCard1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_player"
+        tools:layout_editor_absoluteX="117dp" />
+
+    <TextView
+        android:id="@+id/tv_player_card_2"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="DealerCard2"
+        app:layout_constraintStart_toEndOf="@+id/tv_player_card_1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_player" />
+
+    <TextView
+        android:id="@+id/tv_player_sum_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Sum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_player_card_1" />
+
+    <TextView
+        android:id="@+id/tv_player_sum_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_player_sum_text" />
+
+    <Button
+        android:id="@+id/btn_draw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Draw"
+        app:layout_constraintTop_toBottomOf="@+id/tv_player_sum_num"
+        tools:layout_editor_absoluteX="103dp" />
+
+    <Button
+        android:id="@+id/btn_hold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Hold"
+        app:layout_constraintStart_toEndOf="@+id/btn_draw"
+        app:layout_constraintTop_toBottomOf="@+id/tv_player_sum_num" />
+
+    <TextView
+        android:id="@+id/tv_result_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_hold" />
+
+    <TextView
+        android:id="@+id/tv_result_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_result_text" />
+
+    <Button
+        android:id="@+id/btn_new_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="New Game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_result_num" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
