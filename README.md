@@ -2,6 +2,9 @@
 
 https://www.figma.com/design/HoUXizfgJMcKSe3ByLwB21/Black-Jack?node-id=0-1&p=f&t=N8abdxwg6ebdxGWS-0
 
+<img width="768" height="710" alt="Skärmavbild 2025-11-18 kl  17 17 26" src="https://github.com/user-attachments/assets/6761ef22-9984-4410-a04b-b19902c85017" />
+
+
 The goal of Blackjack is to get a hand with a higher total value than the dealer, while not going over 21.   
 When the dealer or player goes over 21, the hand becomes what is known in Blackjack parlance as “busting” - which always results in a loss of the round.
 
