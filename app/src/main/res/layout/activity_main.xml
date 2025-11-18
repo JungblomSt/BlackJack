@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+
     android:background="@drawable/poker_background">
 
     <TextView
@@ -13,9 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/amarante"
         android:text="BlackJack"
-        android:textSize="28sp"
         android:textColor="@color/fontcolor_main"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/amarante"
         android:text="Dealer:"
         android:textSize="20sp"
         android:textColor="@color/fontcolor_main"
@@ -80,6 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/amarante"
         android:text="Player:"
         android:textSize="20sp"
         android:textColor="@color/fontcolor_main"
@@ -114,6 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/amarante"
         android:textColor="@color/fontcolor_main"
         android:text="Sum"
         app:layout_constraintEnd_toEndOf="parent"
@@ -167,6 +172,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/amarante"
         android:textColor="@color/fontcolor_main"
         android:text="Result"
         app:layout_constraintEnd_toEndOf="parent"
