@@ -8,9 +8,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.blackjack.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var binding : ActivityMainBinding
     lateinit var dealerCard1: TextView
     lateinit var playerCard1: TextView
     lateinit var dealerSum: TextView
@@ -20,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
         dealerCard1 = findViewById(R.id.tv_player_card_1)
         playerCard1 = findViewById(R.id.tv_player_card_1)
