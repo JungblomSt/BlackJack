@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_dealer"
+        android:id="@+id/tv_dealer_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -42,7 +42,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_dealer">
+        app:layout_constraintTop_toBottomOf="@+id/tv_dealer_text">
 
         <TextView
             android:id="@+id/tv_dealer_card_1"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_dealer_sum_text" />
 
     <TextView
-        android:id="@+id/tv_player"
+        android:id="@+id/tv_player_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -104,7 +104,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_player">
+        app:layout_constraintTop_toBottomOf="@+id/tv_player_text">
 
         <TextView
             android:id="@+id/tv_player_card_1"
@@ -123,7 +123,7 @@
             android:textColor="@color/fontcolor_main"
             android:text="PlayerCard2"
             app:layout_constraintStart_toEndOf="@+id/tv_player_card_1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_player" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_player_text" />
     </LinearLayout>
 
     <TextView
