@@ -18,6 +18,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var dealerSum: TextView
     lateinit var playerSum: TextView
 
+    var playerCards = mutableListOf<Int>()
+    var dealerCards = mutableListOf<Int>()
+    var gameOver = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,22 +28,45 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        dealerCard1 = findViewById(R.id.tv_player_card_1)
-        playerCard1 = findViewById(R.id.tv_player_card_1)
-        dealerSum = findViewById(R.id.tv_dealer_sum_num)
-        playerSum = findViewById(R.id.tv_player_sum_num)
-
-
-
-        fun drawCard(): Int {
-            return listOf(1,2,3,4,5,6,7,8,9,10,10,10,10).random()
-        }
-
         //val statsButton = findViewById<Button>(R.id.btn_stat)
         binding.btnStat.setOnClickListener {
             val intent = Intent(this, StatsActivity::class.java)
             startActivity(intent)
         }
+        newGame()
+
+        binding.btnNewGame.setOnClickListener {
+            newGame()
+        }
+        binding.btnDraw.setOnClickListener {
+            playerCards.add(drawCard())
+
+            showCards()
+        }
 
     }
+
+    private fun drawCard(): Int {
+        return listOf(1,2,3,4,5,6,7,8,9,10,10,10,10).random()
+    }
+
+    private fun newGame(){
+        gameOver = false
+        playerCards.add(drawCard())
+        playerCards.add(drawCard())
+
+        dealerCards.add(drawCard())
+
+        showCards()
+    }
+
+    private fun showCards() {
+        binding.tvPlayerCard1.text = playerCards.toString()
+        binding.tvPlayerSumNum.text = playerCards.sum().toString()
+
+        binding.tvDealerCard1.text = dealerCards.toString()
+        binding.tvDealerSumNum.text = dealerCards.sum().toString()
+    }
+
+
 }
