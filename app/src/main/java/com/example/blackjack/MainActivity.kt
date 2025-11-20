@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
 
         dealerCard1 = findViewById(R.id.tv_player_card_1)
         playerCard1 = findViewById(R.id.tv_player_card_1)
@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity() {
             return listOf(1,2,3,4,5,6,7,8,9,10,10,10,10).random()
         }
 
-        val statsButton = findViewById<Button>(R.id.btn_stat)
-        statsButton.setOnClickListener {
+        //val statsButton = findViewById<Button>(R.id.btn_stat)
+        binding.btnStat.setOnClickListener {
             val intent = Intent(this, StatsActivity::class.java)
             startActivity(intent)
         }
