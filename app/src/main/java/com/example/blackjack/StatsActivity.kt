@@ -32,6 +32,7 @@ class StatsActivity : AppCompatActivity() {
 
 
 
+
         val backButton = findViewById<Button>(R.id.btn_stat_back)
         backButton.setOnClickListener {
             finish()
