@@ -9,10 +9,6 @@ import com.example.blackjack.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
-    lateinit var dealerCard1: TextView
-    lateinit var playerCard1: TextView
-    lateinit var dealerSum: TextView
-    lateinit var playerSum: TextView
 
     var playerCardsList = mutableListOf<Int>()
     var dealerCardsList = mutableListOf<Int>()
@@ -29,17 +25,29 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, StatsActivity::class.java)
             startActivity(intent)
         }
-        newGame()
 
         binding.btnNewGame.setOnClickListener {
             newGame()
         }
         binding.btnDraw.setOnClickListener {
-            playerCardsList.add(drawCard())
-
-            showCards()
+            draw()
+        }
+        binding.btnHold.setOnClickListener {
+            while (dealerCardsList.sum() < 17) {
+                dealerCardsList.add(drawCard())
+                showCards()
+            }
+            checkWinner()
         }
 
+        newGame()
+
+    }
+
+    private fun draw() {
+        playerCardsList.add(drawCard())
+
+        showCards()
     }
 
     private fun drawCard(): Int {
@@ -51,6 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         playerCardsList.clear()
         dealerCardsList.clear()
+        binding.tvResultText.text = ""
 
         playerCardsList.add(drawCard())
         playerCardsList.add(drawCard())
@@ -59,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
         showCards()
 
-        checkWinner()
+
 
 
     }
@@ -71,8 +80,8 @@ class MainActivity : AppCompatActivity() {
         binding.tvResultText.text = when {
             playerSum > 21 -> "You busted! Dealer win!"
             dealerSum > 21 -> "Dealer busted! You win!"
-            playerSum > dealerSum -> "You vin!"
-            playerSum < dealerSum -> "Dealer vin!"
+            playerSum > dealerSum -> "You win!"
+            playerSum < dealerSum -> "Dealer wins!"
             else -> "It´s a tie!"
         }
         gameOver = true
