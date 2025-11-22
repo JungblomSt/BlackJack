@@ -14,6 +14,10 @@ class MainActivity : AppCompatActivity() {
     var dealerCardsList = mutableListOf<Int>()
     var gameOver = false
 
+    var winCount = 0
+    var lossesCount = 0
+    var tieCount = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -82,13 +86,28 @@ class MainActivity : AppCompatActivity() {
         var playerSum = playerCardsList.sum()
         var dealerSum = dealerCardsList.sum()
 
-        binding.tvResultText.text = when {
-            playerSum > 21 -> "You busted! Dealer win!"
-            dealerSum > 21 -> "Dealer busted! You win!"
-            playerSum > dealerSum -> "You win!"
-            playerSum < dealerSum -> "Dealer wins!"
-            else -> "It´s a tie!"
+        var resultText = when {
+            playerSum > 21 -> {
+                lossesCount += 1
+                "You busted! Dealer win!"}
+            dealerSum > 21 -> {
+                winCount += 1
+                "Dealer busted! You win!"
+            }
+            playerSum > dealerSum -> {
+                winCount += 1
+                "You win!"
+            }
+            playerSum < dealerSum -> {
+                lossesCount += 1
+                "Dealer wins!"
+            }
+            else -> {
+                tieCount += 1
+                "It´s a tie!"
+            }
         }
+        binding.tvResultText.text = resultText
         gameOver = true
     }
 
