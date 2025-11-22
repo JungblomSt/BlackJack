@@ -58,6 +58,24 @@ class MainActivity : AppCompatActivity() {
         dealerCardsList.add(drawCard())
 
         showCards()
+
+        checkWinner()
+
+
+    }
+
+    private fun checkWinner() {
+        var playerSum = playerCardsList.sum()
+        var dealerSum = dealerCardsList.sum()
+
+        binding.tvResultText.text = when {
+            playerSum > 21 -> "You busted! Dealer win!"
+            dealerSum > 21 -> "Dealer busted! You win!"
+            playerSum > dealerSum -> "You vin!"
+            playerSum < dealerSum -> "Dealer vin!"
+            else -> "It´s a tie!"
+        }
+        gameOver = true
     }
 
     private fun showCards() {
