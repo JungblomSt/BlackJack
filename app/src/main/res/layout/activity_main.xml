@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_dealer"
+        android:id="@+id/tv_dealer_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -42,7 +42,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_dealer">
+        app:layout_constraintTop_toBottomOf="@+id/tv_dealer_text">
 
         <TextView
             android:id="@+id/tv_dealer_card_1"
@@ -65,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/amarante"
         android:textColor="@color/fontcolor_main"
         android:text="Sum"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,15 +76,17 @@
         android:id="@+id/tv_dealer_sum_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/amarante"
         android:text="0"
         android:textColor="@color/fontcolor_main"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_dealer_sum_text" />
 
     <TextView
-        android:id="@+id/tv_player"
+        android:id="@+id/tv_player_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -104,7 +107,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_player">
+        app:layout_constraintTop_toBottomOf="@+id/tv_player_text">
 
         <TextView
             android:id="@+id/tv_player_card_1"
@@ -123,7 +126,7 @@
             android:textColor="@color/fontcolor_main"
             android:text="PlayerCard2"
             app:layout_constraintStart_toEndOf="@+id/tv_player_card_1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_player" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_player_text" />
     </LinearLayout>
 
     <TextView
@@ -142,9 +145,11 @@
         android:id="@+id/tv_player_sum_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/fontcolor_main"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/amarante"
         android:text="0"
+        android:textColor="@color/fontcolor_main"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_player_sum_text" />
@@ -190,41 +195,32 @@
         android:id="@+id/tv_result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/amarante"
-        android:textColor="@color/fontcolor_main"
         android:text="Result"
+        android:textColor="@color/fontcolor_main"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_new_game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_layout" />
 
-    <TextView
-        android:id="@+id/tv_result_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/fontcolor_main"
-        android:text="0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_result_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_new_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/buttoncollor_main"
-        android:textColor="@color/fontcolor_main"
         android:text="New Game"
-        app:strokeColor="@color/btn_stroke_color"
-        app:strokeWidth="2dp"
-        app:elevation="6dp"
+        android:textColor="@color/fontcolor_main"
         app:cornerRadius="8dp"
+        app:elevation="6dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_stat"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_result_num" />
+        app:strokeColor="@color/btn_stroke_color"
+        app:strokeWidth="2dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_stat"
