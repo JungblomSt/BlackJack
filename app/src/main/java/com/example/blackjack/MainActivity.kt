@@ -68,9 +68,6 @@ class MainActivity : AppCompatActivity() {
 
         showCards()
 
-
-
-
     }
 
     private fun checkWinner() {
