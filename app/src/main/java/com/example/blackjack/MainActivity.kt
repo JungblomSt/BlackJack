@@ -33,21 +33,29 @@ class MainActivity : AppCompatActivity() {
             draw()
         }
         binding.btnHold.setOnClickListener {
-            while (dealerCardsList.sum() < 17) {
-                dealerCardsList.add(drawCard())
-                showCards()
-            }
-            checkWinner()
+            hold()
         }
 
         newGame()
 
     }
 
+    private fun hold() {
+        while (dealerCardsList.sum() < 17) {
+            dealerCardsList.add(drawCard())
+            showCards()
+        }
+        checkWinner()
+    }
+
     private fun draw() {
         playerCardsList.add(drawCard())
 
         showCards()
+        if (playerCardsList.sum() >= 21) {
+            checkWinner()
+        }
+
     }
 
     private fun drawCard(): Int {
