@@ -19,6 +19,19 @@ class StatsActivity : AppCompatActivity() {
         binding = ActivityStatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
+
+        val wins = prefs.getInt("wins", 0)
+        binding.tvVictorysCount.text = "$wins"
+
+        val losses = prefs.getInt("losses", 0)
+        binding.tvLosesCount.text = "$losses"
+
+        val ties = prefs.getInt("ties", 0)
+        binding.tvTieCount.text = "$ties"
+
+
+
         val backButton = findViewById<Button>(R.id.btn_stat_back)
         backButton.setOnClickListener {
             finish()

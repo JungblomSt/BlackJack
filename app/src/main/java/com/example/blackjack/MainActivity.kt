@@ -1,6 +1,7 @@
 package com.example.blackjack
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -39,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnHold.setOnClickListener {
             hold()
         }
+
+        val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
+        loadStats(prefs)
 
         newGame()
 
@@ -83,10 +87,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkWinner() {
-        var playerSum = playerCardsList.sum()
-        var dealerSum = dealerCardsList.sum()
+        val playerSum = playerCardsList.sum()
+        val dealerSum = dealerCardsList.sum()
 
-        var resultText = when {
+        val resultText = when {
             playerSum > 21 -> {
                 lossesCount += 1
                 "You busted! Dealer win!"}
@@ -108,7 +112,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.tvResultText.text = resultText
+        saveStats()
         gameOver = true
+    }
+
+    private fun saveStats() {
+        val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
+        prefs.edit()
+            .putInt("wins", winCount)
+            .putInt("losses", lossesCount)
+            .putInt("ties", tieCount)
+            .apply()
+    }
+
+    private fun loadStats(prefs: SharedPreferences){
+        winCount = prefs.getInt("wins", 0)
+        lossesCount = prefs.getInt("losses", 0)
+        tieCount = prefs.getInt("ties", 0)
+
     }
 
     private fun showCards() {
