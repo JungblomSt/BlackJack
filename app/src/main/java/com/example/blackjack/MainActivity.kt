@@ -2,6 +2,7 @@ package com.example.blackjack
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -172,10 +173,16 @@ class MainActivity : AppCompatActivity() {
         playerCardList.forEach { createCardLayout(playerContainer, it) }
 
         dealerCardList.forEach { createCardLayout(dealerContainer, it) }
-
-    //TODO: Dealer visar baksidan av ett kort innan player är klar
+    // TODO: Dealer visar baksidan av ett kort innan player är klar
     // TODO: snyggare kort
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
+        loadStats(prefs)
     }
 
 
