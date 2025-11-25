@@ -7,7 +7,8 @@ class Deck {
 
     val cards = mutableListOf<Card>()
 
-    init {
+    private fun createDeck() {
+        cards.clear()
         for (suit in suits) {
             for (number in numbers){
                 val value = when (number){
@@ -21,4 +22,6 @@ class Deck {
         }
         cards.shuffle()
     }
+
+    fun drawCard(): Card = cards.removeAt(0)
 }

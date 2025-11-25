@@ -11,8 +11,9 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
 
-    var playerCardsList = mutableListOf<Int>()
-    var dealerCardsList = mutableListOf<Int>()
+    val deck = Deck()
+    var playerCardsList = mutableListOf<Card>()
+    var dealerCardsList = mutableListOf<Card>()
     var gameOver = false
 
     var winCount = 0
@@ -49,25 +50,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hold() {
-        while (dealerCardsList.sum() < 17) {
-            dealerCardsList.add(drawCard())
+        while (handValue(dealerCardsList) < 17) {
+            dealerCardsList.add(deck.drawCard())
             showCards()
         }
         checkWinner()
     }
 
     private fun draw() {
-        playerCardsList.add(drawCard())
+        playerCardsList.add(deck.drawCard())
 
         showCards()
-        if (playerCardsList.sum() >= 21) {
+        if (handValue(playerCardsList) >= 21) {
             checkWinner()
         }
 
-    }
-
-    private fun drawCard(): Int {
-        return listOf(1,2,3,4,5,6,7,8,9,10,10,10,10).random()
     }
 
     private fun newGame(){
@@ -77,18 +74,25 @@ class MainActivity : AppCompatActivity() {
         dealerCardsList.clear()
         binding.tvResultText.text = ""
 
-        playerCardsList.add(drawCard())
-        playerCardsList.add(drawCard())
 
-        dealerCardsList.add(drawCard())
+        playerCardsList.add(deck.drawCard())
+        playerCardsList.add(deck.drawCard())
+
+        dealerCardsList.add(deck.drawCard())
 
         showCards()
 
     }
 
+    private fun handValue(hand: List<Card>): Int {
+        val value = hand.sumOf { it.value }
+
+        return value
+    }
+
     private fun checkWinner() {
-        val playerSum = playerCardsList.sum()
-        val dealerSum = dealerCardsList.sum()
+        val playerSum = handValue(playerCardsList)
+        val dealerSum = handValue(dealerCardsList)
 
         val resultText = when {
             playerSum > 21 -> {
@@ -134,10 +138,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun showCards() {
         binding.tvPlayerCard1.text = playerCardsList.toString()
-        binding.tvPlayerSumNum.text = playerCardsList.sum().toString()
+        binding.tvPlayerSumNum.text = handValue(playerCardsList).toString()
 
         binding.tvDealerCard1.text = dealerCardsList.toString()
-        binding.tvDealerSumNum.text = dealerCardsList.sum().toString()
+        binding.tvDealerSumNum.text = handValue(dealerCardsList).toString()
     }
 
 
