@@ -44,20 +44,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_dealer_text">
 
-        <TextView
-            android:id="@+id/tv_dealer_card_1"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:text="DealerCard1"
-            android:textColor="@color/fontcolor_main" />
 
-        <TextView
-            android:id="@+id/tv_dealer_card_2"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginStart="24dp"
-            android:text="DealerCard2"
-            android:textColor="@color/fontcolor_main"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_dealer_card_1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:text="DealerCard1"-->
+<!--            android:textColor="@color/fontcolor_main" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_dealer_card_2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:text="DealerCard2"-->
+<!--            android:textColor="@color/fontcolor_main"/>-->
     </LinearLayout>
 
     <TextView
@@ -109,24 +111,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_player_text">
 
-        <TextView
-            android:id="@+id/tv_player_card_1"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/fontcolor_main"
-            android:text="PlayerCard1" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_player_card_1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:textColor="@color/fontcolor_main"-->
+<!--            android:text="PlayerCard1" />-->
 
-        <TextView
-            android:id="@+id/tv_player_card_2"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/fontcolor_main"
-            android:text="PlayerCard2"
-            app:layout_constraintStart_toEndOf="@+id/tv_player_card_1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_player_text" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_player_card_2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:textColor="@color/fontcolor_main"-->
+<!--            android:text="PlayerCard2"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/tv_player_card_1"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tv_player_text" />-->
     </LinearLayout>
 
     <TextView

@@ -3,6 +3,7 @@ package com.example.blackjack
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.blackjack.databinding.ActivityMainBinding
@@ -11,8 +12,9 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
 
-    var playerCardsList = mutableListOf<Int>()
-    var dealerCardsList = mutableListOf<Int>()
+    val deck = Deck()
+    var playerCardsList = mutableListOf<Card>()
+    var dealerCardsList = mutableListOf<Card>()
     var gameOver = false
 
     var winCount = 0
@@ -49,25 +51,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hold() {
-        while (dealerCardsList.sum() < 17) {
-            dealerCardsList.add(drawCard())
-            showCards()
+        while (handValue(dealerCardsList) < 17) {
+            dealerCardsList.add(deck.drawCard())
+            showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerCardsList, dealerCardsList)
         }
         checkWinner()
     }
 
     private fun draw() {
-        playerCardsList.add(drawCard())
+        playerCardsList.add(deck.drawCard())
 
-        showCards()
-        if (playerCardsList.sum() >= 21) {
+
+        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerCardsList, dealerCardsList)
+        if (handValue(playerCardsList) >= 21) {
             checkWinner()
         }
 
-    }
-
-    private fun drawCard(): Int {
-        return listOf(1,2,3,4,5,6,7,8,9,10,10,10,10).random()
     }
 
     private fun newGame(){
@@ -77,18 +76,27 @@ class MainActivity : AppCompatActivity() {
         dealerCardsList.clear()
         binding.tvResultText.text = ""
 
-        playerCardsList.add(drawCard())
-        playerCardsList.add(drawCard())
 
-        dealerCardsList.add(drawCard())
+        playerCardsList.add(deck.drawCard())
+        playerCardsList.add(deck.drawCard())
 
-        showCards()
+        dealerCardsList.add(deck.drawCard())
+
+        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerCardsList, dealerCardsList)
+
 
     }
 
+    private fun handValue(hand: List<Card>): Int {
+        val value = hand.sumOf { it.value }
+
+        return value
+    }
+
     private fun checkWinner() {
-        val playerSum = playerCardsList.sum()
-        val dealerSum = dealerCardsList.sum()
+        val playerSum = handValue(playerCardsList)
+        val dealerSum = handValue(dealerCardsList)
+
 
         val resultText = when {
             playerSum > 21 -> {
@@ -132,12 +140,33 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun showCards() {
-        binding.tvPlayerCard1.text = playerCardsList.toString()
-        binding.tvPlayerSumNum.text = playerCardsList.sum().toString()
+    private fun showCards(
+        playerContainer: LinearLayout,
+        dealerContainer: LinearLayout,
+        playerCardList: List<Card>,
+        dealerCardList: List<Card>,
+    ) {
+        playerContainer.removeAllViews()
+        dealerContainer.removeAllViews()
 
-        binding.tvDealerCard1.text = dealerCardsList.toString()
-        binding.tvDealerSumNum.text = dealerCardsList.sum().toString()
+        binding.tvPlayerSumNum.text = handValue(playerCardList).toString()
+        binding.tvDealerSumNum.text = handValue(dealerCardList).toString()
+
+        fun createCardLayout(container: LinearLayout, card: Card) {
+            val cardView = layoutInflater.inflate(R.layout.cards_card, container, false)
+            val tvCard = cardView.findViewById<TextView>(R.id.tv_card)
+
+            tvCard.text = "${card.number}${card.suit}"
+
+            container.addView(cardView)
+        }
+
+        playerCardList.forEach { createCardLayout(playerContainer, it) }
+
+        dealerCardList.forEach { createCardLayout(dealerContainer, it) }
+
+
+
     }
 
 
