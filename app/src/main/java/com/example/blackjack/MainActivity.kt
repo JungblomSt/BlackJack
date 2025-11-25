@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     var lossesCount = 0
     var tieCount = 0
 
+    //TODO: Kommentering av koden
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -165,7 +167,8 @@ class MainActivity : AppCompatActivity() {
 
         dealerCardList.forEach { createCardLayout(dealerContainer, it) }
 
-
+    //TODO: Dealer visar baksidan av ett kort innan player är klar
+    // TODO: snyggare kort
 
     }
 
