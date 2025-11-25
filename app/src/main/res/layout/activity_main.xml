@@ -44,8 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_dealer_text">
 
-
-
+        <include layout="@layout/cards_card"/>
 <!--        <TextView-->
 <!--            android:id="@+id/tv_dealer_card_1"-->
 <!--            android:layout_width="wrap_content"-->
@@ -110,6 +109,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_player_text">
+
+        <include layout="@layout/cards_card"/>
 
 <!--        <TextView-->
 <!--            android:id="@+id/tv_player_card_1"-->

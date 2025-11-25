@@ -11,7 +11,7 @@ class Deck {
         createDeck()
     }
 
-    private fun createDeck() {
+    fun createDeck() {
         cards.clear()
         for (suit in suits) {
             for (number in numbers){

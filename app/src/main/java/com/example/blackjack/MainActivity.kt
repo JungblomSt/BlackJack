@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     var lossesCount = 0
     var tieCount = 0
 
+    //TODO: Kommentering av koden
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -72,6 +74,7 @@ class MainActivity : AppCompatActivity() {
     private fun newGame(){
         gameOver = false
 
+        deck.createDeck()
         playerCardsList.clear()
         dealerCardsList.clear()
         binding.tvResultText.text = ""
@@ -88,8 +91,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handValue(hand: List<Card>): Int {
-        val value = hand.sumOf { it.value }
+        var value = hand.sumOf { it.value }
+        var aces = hand.count {it.number == "A"}
 
+        while (value > 21 && aces > 0) {
+            value -= 10
+            aces--
+        }
         return value
     }
 
@@ -165,7 +173,8 @@ class MainActivity : AppCompatActivity() {
 
         dealerCardList.forEach { createCardLayout(dealerContainer, it) }
 
-
+    //TODO: Dealer visar baksidan av ett kort innan player är klar
+    // TODO: snyggare kort
 
     }
 
