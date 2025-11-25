@@ -10,8 +10,8 @@ class Deck {
     init {
         createDeck()
     }
-// TODO: A = 1 eller 11
-    private fun createDeck() {
+
+    fun createDeck() {
         cards.clear()
         for (suit in suits) {
             for (number in numbers){
