@@ -3,6 +3,7 @@ package com.example.blackjack
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.blackjack.databinding.ActivityMainBinding
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     private fun hold() {
         while (handValue(dealerCardsList) < 17) {
             dealerCardsList.add(deck.drawCard())
-            showCards()
+            showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerCardsList, dealerCardsList)
         }
         checkWinner()
     }
@@ -60,7 +61,8 @@ class MainActivity : AppCompatActivity() {
     private fun draw() {
         playerCardsList.add(deck.drawCard())
 
-        showCards()
+
+        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerCardsList, dealerCardsList)
         if (handValue(playerCardsList) >= 21) {
             checkWinner()
         }
@@ -80,7 +82,8 @@ class MainActivity : AppCompatActivity() {
 
         dealerCardsList.add(deck.drawCard())
 
-        showCards()
+        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerCardsList, dealerCardsList)
+
 
     }
 
@@ -93,6 +96,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkWinner() {
         val playerSum = handValue(playerCardsList)
         val dealerSum = handValue(dealerCardsList)
+
 
         val resultText = when {
             playerSum > 21 -> {
@@ -136,12 +140,33 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun showCards() {
-        binding.tvPlayerCard1.text = playerCardsList.toString()
-        binding.tvPlayerSumNum.text = handValue(playerCardsList).toString()
+    private fun showCards(
+        playerContainer: LinearLayout,
+        dealerContainer: LinearLayout,
+        playerCardList: List<Card>,
+        dealerCardList: List<Card>,
+    ) {
+        playerContainer.removeAllViews()
+        dealerContainer.removeAllViews()
 
-        binding.tvDealerCard1.text = dealerCardsList.toString()
-        binding.tvDealerSumNum.text = handValue(dealerCardsList).toString()
+        binding.tvPlayerSumNum.text = handValue(playerCardList).toString()
+        binding.tvDealerSumNum.text = handValue(dealerCardList).toString()
+
+        fun createCardLayout(container: LinearLayout, card: Card) {
+            val cardView = layoutInflater.inflate(R.layout.cards_card, container, false)
+            val tvCard = cardView.findViewById<TextView>(R.id.tv_card)
+
+            tvCard.text = "${card.number}${card.suit}"
+
+            container.addView(cardView)
+        }
+
+        playerCardList.forEach { createCardLayout(playerContainer, it) }
+
+        dealerCardList.forEach { createCardLayout(dealerContainer, it) }
+
+
+
     }
 
 

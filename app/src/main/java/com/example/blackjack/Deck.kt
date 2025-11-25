@@ -7,6 +7,10 @@ class Deck {
 
     val cards = mutableListOf<Card>()
 
+    init {
+        createDeck()
+    }
+
     private fun createDeck() {
         cards.clear()
         for (suit in suits) {
@@ -14,9 +18,9 @@ class Deck {
                 val value = when (number){
                     "A" -> 11
                     "J", "Q", "K" -> 10
-                    else -> number.withIndex() + 1
+                    else -> number.toInt()
                 }
-                cards.add(Card(number, suit, value as Int))
+                cards.add(Card(number, suit, value))
             }
 
         }
