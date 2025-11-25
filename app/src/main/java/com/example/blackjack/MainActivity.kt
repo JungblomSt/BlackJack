@@ -149,6 +149,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    // Save the Stats when you come back from StatsActivity (if reset)
+    override fun onResume() {
+        super.onResume()
+
+        val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
+        loadStats(prefs)
+    }
+
     private fun showCards(
         playerContainer: LinearLayout,
         dealerContainer: LinearLayout,
@@ -177,13 +185,5 @@ class MainActivity : AppCompatActivity() {
     // TODO: snyggare kort
 
     }
-
-    override fun onResume() {
-        super.onResume()
-
-        val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
-        loadStats(prefs)
-    }
-
 
 }

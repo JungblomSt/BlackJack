@@ -13,8 +13,6 @@ class StatsActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityStatsBinding
 
-    //TODO: Rensaknapp
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
