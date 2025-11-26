@@ -175,6 +175,10 @@ class MainActivity : AppCompatActivity() {
 
             tvCard.text = "${card.number}${card.suit}"
 
+//            if (card.suit == "♥" || card.suit == "♦"){
+//                stroke
+//            }
+
             container.addView(cardView)
         }
 
@@ -182,7 +186,6 @@ class MainActivity : AppCompatActivity() {
 
         dealerCardList.forEach { createCardLayout(dealerContainer, it) }
     // TODO: Dealer visar baksidan av ett kort innan player är klar
-    // TODO: snyggare kort
 
     }
 
