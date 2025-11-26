@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BlackJack</string>
+    <string name="dealer">Givare:</string>
+    <string name="sum">Tot</string>
+    <string name="player">Spelare:</string>
+    <string name="draw">Dra</string>
+    <string name="stand">Stanna</string>
+    <string name="result">Resultat</string>
+    <string name="new_game">Nytt spet</string>
+    <string name="statistics">Statistik</string>
+    <string name="vinns">Vinster</string>
+    <string name="losses">Förluster</string>
+    <string name="tie">Lika</string>
+    <string name="back">Tillbaka</string>
+    <string name="reset">Radera</string>
+
+</resources>
