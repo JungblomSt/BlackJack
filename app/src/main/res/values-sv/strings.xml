@@ -15,4 +15,10 @@
     <string name="back">Tillbaka</string>
     <string name="reset">Radera</string>
 
+    <string name="you_busted">Du blev "tjock"! Givaren vann!</string>
+    <string name="dealer_busted">Givaren blev "tjock"! Du vann!</string>
+    <string name="you_win">Du vann!</string>
+    <string name="dealer_wins">Givaren vann!</string>
+    <string name="it_s_a_tie">Det blev lika!</string>
+
 </resources>

@@ -110,22 +110,22 @@ class MainActivity : AppCompatActivity() {
         val resultText = when {
             playerSum > 21 -> {
                 lossesCount += 1
-                "You busted! Dealer win!"}
+                getString(R.string.you_busted)}
             dealerSum > 21 -> {
                 winCount += 1
-                "Dealer busted! You win!"
+                getString(R.string.dealer_busted)
             }
             playerSum > dealerSum -> {
                 winCount += 1
-                "You win!"
+                getString(R.string.you_win)
             }
             playerSum < dealerSum -> {
                 lossesCount += 1
-                "Dealer wins!"
+                getString(R.string.dealer_wins)
             }
             else -> {
                 tieCount += 1
-                "It´s a tie!"
+                getString(R.string.it_s_a_tie)
             }
         }
         binding.tvResultText.text = resultText

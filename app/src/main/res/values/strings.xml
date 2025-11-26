@@ -14,4 +14,10 @@
     <string name="back">Back</string>
     <string name="reset">Reset</string>
 
+    <string name="you_busted">You busted! Dealer win!</string>
+    <string name="dealer_busted">Dealer busted! You win!</string>
+    <string name="you_win">You win!</string>
+    <string name="dealer_wins">Dealer wins!</string>
+    <string name="it_s_a_tie">It´s a tie!</string>
+
 </resources>
