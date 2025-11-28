@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     //TODO: switch sv - eng och ev något mer
     // TODO: Dealer visar baksidan av ett kort innan player är klar
     //TODO: ram runt card är röd om "♥" || "♦"
+    //TODO: Layout för liggande skärm
+    //TODO: Lägg till ett fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
