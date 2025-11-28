@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity() {
     var tieCount = 0
 
     //TODO: Kommentering av koden
+    //TODO: switch sv - eng och ev något mer
+    // TODO: Dealer visar baksidan av ett kort innan player är klar
+    //TODO: ram runt card är röd om "♥" || "♦"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -190,7 +193,7 @@ class MainActivity : AppCompatActivity() {
         playerHand.forEach { createCardLayout(playerContainer, it) }
 
         dealerHand.forEach { createCardLayout(dealerContainer, it) }
-    // TODO: Dealer visar baksidan av ett kort innan player är klar
+
 
     }
 
