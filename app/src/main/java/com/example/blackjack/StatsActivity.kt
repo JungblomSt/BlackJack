@@ -13,8 +13,6 @@ class StatsActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityStatsBinding
 
-    //TODO: Rensaknapp
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,12 +30,19 @@ class StatsActivity : AppCompatActivity() {
         val ties = prefs.getInt("ties", 0)
         binding.tvTieCount.text = "$ties"
 
-
-
-
-        val backButton = findViewById<Button>(R.id.btn_stat_back)
-        backButton.setOnClickListener {
+        binding.btnStatBack.setOnClickListener {
             finish()
+        }
+        binding.btnStatReset.setOnClickListener {
+            prefs.edit()
+                .putInt("wins", 0)
+                .putInt("losses", 0)
+                .putInt("ties", 0)
+                .apply()
+
+            binding.tvVictorysCount.text = "0"
+            binding.tvLosesCount.text = "0"
+            binding.tvTieCount.text = "0"
         }
     }
 }

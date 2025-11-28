@@ -7,14 +7,15 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.blackjack.databinding.ActivityMainBinding
+import com.google.android.material.card.MaterialCardView
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
 
     val deck = Deck()
-    var playerCardsList = mutableListOf<Card>()
-    var dealerCardsList = mutableListOf<Card>()
+    var playerHand = mutableListOf<Card>()
+    var dealerHand = mutableListOf<Card>()
     var gameOver = false
 
     var winCount = 0
@@ -53,19 +54,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hold() {
-        while (handValue(dealerCardsList) < 17) {
-            dealerCardsList.add(deck.drawCard())
-            showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerCardsList, dealerCardsList)
+        while (handValue(dealerHand) < 17) {
+            dealerHand.add(deck.drawCard())
+            showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerHand, dealerHand)
         }
         checkWinner()
     }
 
     private fun draw() {
-        playerCardsList.add(deck.drawCard())
+        playerHand.add(deck.drawCard())
 
 
-        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerCardsList, dealerCardsList)
-        if (handValue(playerCardsList) >= 21) {
+        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerHand, dealerHand)
+        if (handValue(playerHand) >= 21) {
             checkWinner()
         }
 
@@ -75,17 +76,17 @@ class MainActivity : AppCompatActivity() {
         gameOver = false
 
         deck.createDeck()
-        playerCardsList.clear()
-        dealerCardsList.clear()
+        playerHand.clear()
+        dealerHand.clear()
         binding.tvResultText.text = ""
 
 
-        playerCardsList.add(deck.drawCard())
-        playerCardsList.add(deck.drawCard())
+        playerHand.add(deck.drawCard())
+        playerHand.add(deck.drawCard())
 
-        dealerCardsList.add(deck.drawCard())
+        dealerHand.add(deck.drawCard())
 
-        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerCardsList, dealerCardsList)
+        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerHand, dealerHand)
 
 
     }
@@ -102,29 +103,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkWinner() {
-        val playerSum = handValue(playerCardsList)
-        val dealerSum = handValue(dealerCardsList)
+        val playerSum = handValue(playerHand)
+        val dealerSum = handValue(dealerHand)
 
 
         val resultText = when {
             playerSum > 21 -> {
                 lossesCount += 1
-                "You busted! Dealer win!"}
+                getString(R.string.you_busted)}
             dealerSum > 21 -> {
                 winCount += 1
-                "Dealer busted! You win!"
+                getString(R.string.dealer_busted)
             }
             playerSum > dealerSum -> {
                 winCount += 1
-                "You win!"
+                getString(R.string.you_win)
             }
             playerSum < dealerSum -> {
                 lossesCount += 1
-                "Dealer wins!"
+                getString(R.string.dealer_wins)
             }
             else -> {
                 tieCount += 1
-                "It´s a tie!"
+                getString(R.string.it_s_a_tie)
             }
         }
         binding.tvResultText.text = resultText
@@ -148,17 +149,25 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    // Save the Stats when you come back from StatsActivity (if reset)
+    override fun onResume() {
+        super.onResume()
+
+        val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
+        loadStats(prefs)
+    }
+
     private fun showCards(
         playerContainer: LinearLayout,
         dealerContainer: LinearLayout,
-        playerCardList: List<Card>,
-        dealerCardList: List<Card>,
+        playerHand: List<Card>,
+        dealerHand: List<Card>,
     ) {
         playerContainer.removeAllViews()
         dealerContainer.removeAllViews()
 
-        binding.tvPlayerSumNum.text = handValue(playerCardList).toString()
-        binding.tvDealerSumNum.text = handValue(dealerCardList).toString()
+        binding.tvPlayerSumNum.text = handValue(playerHand).toString()
+        binding.tvDealerSumNum.text = handValue(dealerHand).toString()
 
         fun createCardLayout(container: LinearLayout, card: Card) {
             val cardView = layoutInflater.inflate(R.layout.cards_card, container, false)
@@ -166,17 +175,23 @@ class MainActivity : AppCompatActivity() {
 
             tvCard.text = "${card.number}${card.suit}"
 
+//            val cvCard = cardView.findViewById<MaterialCardView>(R.id.cv_card)
+//            val isRedSuit = card.suit == "♥" || card.suit == "♦"
+//
+//            if (isRedSuit){
+//                cvCard.strokeColor = R.color.red
+//            } else {
+//                cvCard.strokeColor = R.color.black
+//            }
+
             container.addView(cardView)
         }
 
-        playerCardList.forEach { createCardLayout(playerContainer, it) }
+        playerHand.forEach { createCardLayout(playerContainer, it) }
 
-        dealerCardList.forEach { createCardLayout(dealerContainer, it) }
-
-    //TODO: Dealer visar baksidan av ett kort innan player är klar
-    // TODO: snyggare kort
+        dealerHand.forEach { createCardLayout(dealerContainer, it) }
+    // TODO: Dealer visar baksidan av ett kort innan player är klar
 
     }
-
 
 }

@@ -5,14 +5,20 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatsActivity"
-    android:background="@drawable/poker_backgruond_blue">
+    tools:context=".StatsActivity">
+
+    <ImageView
+        android:id="@+id/iv_background_stat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/poker_backgruond_blue"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/tv_title_stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/amarante"
         android:text="BlackJack"
         android:textColor="@color/fontcolor_main"
@@ -26,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
-        android:text="Vinns"
+        android:text="@string/vinns"
         android:fontFamily="@font/amarante"
         android:textColor="@color/fontcolor_main"
         android:textSize="34sp"
@@ -54,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/amarante"
-        android:text="Losses"
+        android:text="@string/losses"
         android:textColor="@color/fontcolor_main"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/amarante"
-        android:text="Tie"
+        android:text="@string/tie"
         android:textColor="@color/fontcolor_main"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +113,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/buttoncollor_main"
-        android:text="Back"
+        android:text="@string/back"
         android:textColor="@color/fontcolor_main"
         app:cornerRadius="8dp"
         app:elevation="6dp"
@@ -115,6 +121,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/btn_stroke_color"
         app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_stat_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/buttoncollor_main"
+        android:text="@string/reset"
+        android:textColor="@color/fontcolor_main"
+        app:cornerRadius="8dp"
+        app:elevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:strokeColor="@color/btn_stroke_color"
+        app:strokeWidth="2dp" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
