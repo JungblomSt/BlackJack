@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.blackjack.databinding.ActivityMainBinding
+import com.google.android.material.card.MaterialCardView
 
 class MainActivity : AppCompatActivity() {
 
@@ -174,8 +175,13 @@ class MainActivity : AppCompatActivity() {
 
             tvCard.text = "${card.number}${card.suit}"
 
-//            if (card.suit == "♥" || card.suit == "♦"){
-//                stroke
+//            val cvCard = cardView.findViewById<MaterialCardView>(R.id.cv_card)
+//            val isRedSuit = card.suit == "♥" || card.suit == "♦"
+//
+//            if (isRedSuit){
+//                cvCard.strokeColor = R.color.red
+//            } else {
+//                cvCard.strokeColor = R.color.black
 //            }
 
             container.addView(cardView)
