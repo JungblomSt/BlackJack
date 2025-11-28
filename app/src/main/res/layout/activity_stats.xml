@@ -5,8 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatsActivity"
-    android:background="@drawable/poker_backgruond_blue">
+    tools:context=".StatsActivity">
+
+    <ImageView
+        android:id="@+id/iv_background_stat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/poker_backgruond_blue"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/tv_title_stats"
@@ -131,6 +137,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:strokeColor="@color/btn_stroke_color"
         app:strokeWidth="2dp" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
