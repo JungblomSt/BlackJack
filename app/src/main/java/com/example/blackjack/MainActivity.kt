@@ -1,11 +1,13 @@
 package com.example.blackjack
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.blackjack.databinding.ActivityMainBinding
 import com.google.android.material.card.MaterialCardView
 
@@ -23,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     var tieCount = 0
 
     //TODO: Kommentering av koden
+    //TODO: switch sv - eng och ev något mer
+    //TODO: Dealer visar baksidan av ett kort innan player är klar
+    //TODO: Lägg till ett fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -157,6 +162,8 @@ class MainActivity : AppCompatActivity() {
         loadStats(prefs)
     }
 
+    //---------------- UI -------------------------//
+
     private fun showCards(
         playerContainer: LinearLayout,
         dealerContainer: LinearLayout,
@@ -175,14 +182,13 @@ class MainActivity : AppCompatActivity() {
 
             tvCard.text = "${card.number}${card.suit}"
 
-//            val cvCard = cardView.findViewById<MaterialCardView>(R.id.cv_card)
-//            val isRedSuit = card.suit == "♥" || card.suit == "♦"
-//
-//            if (isRedSuit){
-//                cvCard.strokeColor = R.color.red
-//            } else {
-//                cvCard.strokeColor = R.color.black
-//            }
+            val cvCard = cardView.findViewById<MaterialCardView>(R.id.cv_card)
+            val isRedSuit = card.suit == "♥" || card.suit == "♦"
+
+            cvCard.strokeColor = if (isRedSuit)
+                ContextCompat.getColor(this,R.color.red)
+            else
+                ContextCompat.getColor(this, R.color.black)
 
             container.addView(cardView)
         }
@@ -190,7 +196,7 @@ class MainActivity : AppCompatActivity() {
         playerHand.forEach { createCardLayout(playerContainer, it) }
 
         dealerHand.forEach { createCardLayout(dealerContainer, it) }
-    // TODO: Dealer visar baksidan av ett kort innan player är klar
+
 
     }
 
