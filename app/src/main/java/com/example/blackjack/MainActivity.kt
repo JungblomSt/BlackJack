@@ -190,7 +190,6 @@ class MainActivity : AppCompatActivity() {
             else
                 ContextCompat.getColor(this, R.color.black)
 
-
             container.addView(cardView)
         }
 
