@@ -21,4 +21,6 @@
     <string name="dealer_wins">Givaren vann!</string>
     <string name="it_s_a_tie">Det blev lika!</string>
 
+    <string name="count_hand">Räkna hand</string>
+    <string name="orientation">\u2194 / \u2195 </string>
 </resources>
