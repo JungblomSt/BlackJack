@@ -13,7 +13,6 @@ import com.example.blackjack.databinding.ActivityMainBinding
 import com.google.android.material.card.MaterialCardView
 
 class MainActivity : AppCompatActivity(){
-//    , SettingsFragment.SettingsFragmentListener
     lateinit var binding : ActivityMainBinding
     private val sharedViewModel: SharedViewModel by viewModels()
 
@@ -34,38 +33,8 @@ class MainActivity : AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //val statsButton = findViewById<Button>(R.id.btn_stat)
-        binding.btnStat.setOnClickListener {
-            val intent = Intent(this, StatsActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.btnNewGame.setOnClickListener {
-            newGame()
-        }
-        binding.btnDraw.setOnClickListener {
-            draw()
-        }
-        binding.btnHold.setOnClickListener {
-            hold()
-        }
-        binding.ibSettings.setOnClickListener {
-            startSettingsFragment()
-
-        }
-
-        sharedViewModel.textVisible.observe(this) { visible ->
-            binding.tvPlayerSumNum.visibility =
-                if (visible) View.VISIBLE else View.INVISIBLE
-            binding.tvDealerSumNum.visibility =
-                if (visible) View.VISIBLE else View.INVISIBLE
-            binding.tvPlayerSumText?.visibility =
-                if (visible) View.VISIBLE else View.INVISIBLE
-            binding.tvDealerSumText?.visibility =
-                if (visible) View.VISIBLE else View.INVISIBLE
-
-        }
-
+        activateButtons()
+        observeShowCountSetting()
 
         val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
         loadStats(prefs)
@@ -74,13 +43,29 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    private fun startSettingsFragment() {
-        val settingsFragment = SettingsFragment()
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.settingsContainer, settingsFragment, "settingsFragment")
-        transaction.commit()
-
+    // Save the Stats when you come back from StatsActivity (if reset)
+    override fun onResume() {
+        super.onResume()
+        loadStats(getSharedPreferences("blackjack_stats", MODE_PRIVATE))
     }
+
+    //---------------- Game functions -------------------------//
+    private fun newGame(){
+        gameOver = false
+
+        deck.createDeck()
+        playerHand.clear()
+        dealerHand.clear()
+        binding.tvResultText.text = ""
+
+        playerHand.add(deck.drawCard())
+        playerHand.add(deck.drawCard())
+
+        dealerHand.add(deck.drawCard())
+
+        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerHand, dealerHand)
+    }
+
     private fun hold() {
         while (handValue(dealerHand) < 17) {
             dealerHand.add(deck.drawCard())
@@ -91,34 +76,13 @@ class MainActivity : AppCompatActivity(){
 
     private fun draw() {
         playerHand.add(deck.drawCard())
-
-
         showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerHand, dealerHand)
         if (handValue(playerHand) >= 21) {
             checkWinner()
         }
-
     }
 
-    private fun newGame(){
-        gameOver = false
-
-        deck.createDeck()
-        playerHand.clear()
-        dealerHand.clear()
-        binding.tvResultText.text = ""
-
-
-        playerHand.add(deck.drawCard())
-        playerHand.add(deck.drawCard())
-
-        dealerHand.add(deck.drawCard())
-
-        showCards(binding.cardLayoutPlayer, binding.cardLayoutDealer,playerHand, dealerHand)
-
-
-    }
-
+    //---------------- Math -------------------------//
     private fun handValue(hand: List<Card>): Int {
         var value = hand.sumOf { it.value }
         var aces = hand.count {it.number == "A"}
@@ -134,33 +98,26 @@ class MainActivity : AppCompatActivity(){
         val playerSum = handValue(playerHand)
         val dealerSum = handValue(dealerHand)
 
-
         val resultText = when {
-            playerSum > 21 -> {
-                lossesCount += 1
-                getString(R.string.you_busted)}
-            dealerSum > 21 -> {
-                winCount += 1
-                getString(R.string.dealer_busted)
-            }
-            playerSum > dealerSum -> {
-                winCount += 1
-                getString(R.string.you_win)
-            }
-            playerSum < dealerSum -> {
-                lossesCount += 1
-                getString(R.string.dealer_wins)
-            }
-            else -> {
-                tieCount += 1
-                getString(R.string.it_s_a_tie)
+            playerSum > 21 -> {lossesCount++; getString(R.string.you_busted)}
+            dealerSum > 21 -> {winCount++; getString(R.string.dealer_busted)}
+            playerSum > dealerSum -> {winCount++; getString(R.string.you_win)}
+            playerSum < dealerSum -> {lossesCount++; getString(R.string.dealer_wins)}
+            else -> {tieCount++; getString(R.string.it_s_a_tie)
             }
         }
         binding.tvResultText.text = resultText
         saveStats()
         gameOver = true
     }
+    private fun startSettingsFragment() {
+        val settingsFragment = SettingsFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.settingsContainer, settingsFragment, "settingsFragment")
+        transaction.commit()
+    }
 
+    //---------------- Stats -------------------------//
     private fun saveStats() {
         val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
         prefs.edit()
@@ -177,13 +134,7 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    // Save the Stats when you come back from StatsActivity (if reset)
-    override fun onResume() {
-        super.onResume()
 
-        val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
-        loadStats(prefs)
-    }
 
     //---------------- UI -------------------------//
 
@@ -219,8 +170,38 @@ class MainActivity : AppCompatActivity(){
         playerHand.forEach { createCardLayout(playerContainer, it) }
 
         dealerHand.forEach { createCardLayout(dealerContainer, it) }
+    }
+    private fun activateButtons() {
+        binding.btnStat.setOnClickListener {
+            val intent = Intent(this, StatsActivity::class.java)
+            startActivity(intent)
+        }
 
+        binding.btnNewGame.setOnClickListener {
+            newGame()
+        }
+        binding.btnDraw.setOnClickListener {
+            if (!gameOver)draw()
+        }
+        binding.btnHold.setOnClickListener {
+            if (!gameOver)hold()
+        }
+        binding.ibSettings.setOnClickListener {
+            startSettingsFragment()
 
+        }
+    }
+    private fun observeShowCountSetting() {
+        sharedViewModel.textVisible.observe(this) { visible ->
+
+            val visibility = if (visible) View.VISIBLE else View.INVISIBLE
+
+            binding.tvPlayerSumNum.visibility = visibility
+            binding.tvDealerSumNum.visibility = visibility
+            binding.tvPlayerSumText?.visibility = visibility
+            binding.tvDealerSumText?.visibility = visibility
+
+        }
     }
 
 }
