@@ -12,8 +12,8 @@ import androidx.core.content.ContextCompat
 import com.example.blackjack.databinding.ActivityMainBinding
 import com.google.android.material.card.MaterialCardView
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivity(){
+//    , SettingsFragment.SettingsFragmentListener
     lateinit var binding : ActivityMainBinding
     private val sharedViewModel: SharedViewModel by viewModels()
 
@@ -27,9 +27,7 @@ class MainActivity : AppCompatActivity() {
     var tieCount = 0
 
     //TODO: Kommentering av koden
-    //TODO: switch sv - eng och ev något mer
     //TODO: Dealer visar baksidan av ett kort innan player är klar
-    //TODO: Lägg till ett fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             hold()
         }
         binding.ibSettings.setOnClickListener {
-            settings()
+            startSettingsFragment()
 
         }
 
@@ -72,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun settings() {
+    private fun startSettingsFragment() {
         val settingsFragment = SettingsFragment()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.settingsContainer, settingsFragment, "settingsFragment")
