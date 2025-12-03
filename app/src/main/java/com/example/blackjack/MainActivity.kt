@@ -59,6 +59,10 @@ class MainActivity : AppCompatActivity(){
                 if (visible) View.VISIBLE else View.INVISIBLE
             binding.tvDealerSumNum.visibility =
                 if (visible) View.VISIBLE else View.INVISIBLE
+            binding.tvPlayerSumText?.visibility =
+                if (visible) View.VISIBLE else View.INVISIBLE
+            binding.tvDealerSumText?.visibility =
+                if (visible) View.VISIBLE else View.INVISIBLE
 
         }
 
