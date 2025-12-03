@@ -20,4 +20,7 @@
     <string name="dealer_wins">Dealer wins!</string>
     <string name="it_s_a_tie">It´s a tie!</string>
 
+    <string name="count_hand">Count hand</string>
+    <string name="orientation">\u2194 / \u2195 </string>
+
 </resources>

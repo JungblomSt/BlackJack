@@ -1,0 +1,82 @@
+package com.example.blackjack
+
+import android.app.Activity
+import android.content.Context
+import android.content.pm.ActivityInfo
+import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.textclassifier.TextLanguage
+import com.example.blackjack.databinding.FragmentSettingsBinding
+import java.util.Locale
+
+class SettingsFragment : Fragment() {
+//    interface SettingsFragmentListener{
+//    }
+//    var owner: SettingsFragmentListener? = null
+//
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//
+//        try {
+//            owner = context as SettingsFragmentListener
+//            Log.i("SOUT", "Listener implemented in owner Activity")
+//        }catch (e: Exception){
+//            Log.i("SOUT", "Listener NOT implemented in owner Activity")
+//
+//        }
+//
+//    }
+
+    private var _binding: FragmentSettingsBinding? = null
+    val binding get() = _binding!!
+    private val sharedViewModel: SharedViewModel by activityViewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.ibSettingsFv.setOnClickListener {
+            removeSettingsFragment()
+        }
+
+        val orientation = requireActivity().requestedOrientation
+        binding.switchLand.isChecked = orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+        binding.switchLand.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked){
+                requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            }else {
+                requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            }
+        }
+        binding.switchHand.setOnCheckedChangeListener { _, isChecked ->
+            sharedViewModel.setTextVisible(!isChecked)
+            }
+    }
+
+    private fun removeSettingsFragment(){
+        parentFragmentManager.beginTransaction()
+            .remove(this)
+            .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroyView()
+        _binding = null
+//        owner = null
+    }
+
+}

@@ -1,19 +1,21 @@
 package com.example.blackjack
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.blackjack.databinding.ActivityMainBinding
 import com.google.android.material.card.MaterialCardView
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivity(){
+//    , SettingsFragment.SettingsFragmentListener
     lateinit var binding : ActivityMainBinding
+    private val sharedViewModel: SharedViewModel by viewModels()
 
     val deck = Deck()
     var playerHand = mutableListOf<Card>()
@@ -25,14 +27,11 @@ class MainActivity : AppCompatActivity() {
     var tieCount = 0
 
     //TODO: Kommentering av koden
-    //TODO: switch sv - eng och ev något mer
     //TODO: Dealer visar baksidan av ett kort innan player är klar
-    //TODO: Lägg till ett fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
         //val statsButton = findViewById<Button>(R.id.btn_stat)
@@ -50,6 +49,23 @@ class MainActivity : AppCompatActivity() {
         binding.btnHold.setOnClickListener {
             hold()
         }
+        binding.ibSettings.setOnClickListener {
+            startSettingsFragment()
+
+        }
+
+        sharedViewModel.textVisible.observe(this) { visible ->
+            binding.tvPlayerSumNum.visibility =
+                if (visible) View.VISIBLE else View.INVISIBLE
+            binding.tvDealerSumNum.visibility =
+                if (visible) View.VISIBLE else View.INVISIBLE
+            binding.tvPlayerSumText?.visibility =
+                if (visible) View.VISIBLE else View.INVISIBLE
+            binding.tvDealerSumText?.visibility =
+                if (visible) View.VISIBLE else View.INVISIBLE
+
+        }
+
 
         val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
         loadStats(prefs)
@@ -58,6 +74,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun startSettingsFragment() {
+        val settingsFragment = SettingsFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.settingsContainer, settingsFragment, "settingsFragment")
+        transaction.commit()
+
+    }
     private fun hold() {
         while (handValue(dealerHand) < 17) {
             dealerHand.add(deck.drawCard())
