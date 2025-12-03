@@ -1,8 +1,10 @@
 package com.example.blackjack
 
 import android.app.Activity
+import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import android.view.LayoutInflater
@@ -13,6 +15,23 @@ import com.example.blackjack.databinding.FragmentSettingsBinding
 import java.util.Locale
 
 class SettingsFragment : Fragment() {
+//    interface SettingsFragmentListener{
+//    }
+//    var owner: SettingsFragmentListener? = null
+//
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//
+//        try {
+//            owner = context as SettingsFragmentListener
+//            Log.i("SOUT", "Listener implemented in owner Activity")
+//        }catch (e: Exception){
+//            Log.i("SOUT", "Listener NOT implemented in owner Activity")
+//
+//        }
+//
+//    }
+
     private var _binding: FragmentSettingsBinding? = null
     val binding get() = _binding!!
     private val sharedViewModel: SharedViewModel by activityViewModels()
@@ -54,9 +73,10 @@ class SettingsFragment : Fragment() {
             .commit()
     }
 
-    override fun onDestroyView() {
+    override fun onDestroy() {
         super.onDestroyView()
         _binding = null
+//        owner = null
     }
 
 }
