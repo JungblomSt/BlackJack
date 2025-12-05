@@ -32,6 +32,8 @@ Full game ruond: Draw (Hit), Hold and New Game
 Dealer draw cards until sum 17  
 Ace counts as 11 ore 1  
 Result message (Vinn, lose or tie)  
+Player Winns right away when hitting 21  
+You are not able to push draw or hit after a game has ended
 
 Statistics:  
 Saved in Shered Preferense  
@@ -39,8 +41,8 @@ Counts: Wins, Losses and Tie
 Statistics view with reset button  
 
 Settings:  
-Show/Hide gamers result sum  
-Lock/rotate screen orientation (portrate/landscape)  
+- Show/Hide gamers result sum  
+- rotate screen orientation (portrate/landscape)  
 Close the settings fragment by clicking the settings button or outside the fragment view  
 Options for language in English and Swedish (phone settings)
 
