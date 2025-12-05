@@ -57,7 +57,11 @@ Files:
 - SettingsFragment – settings menu
 - StatsActivity – shows statistics
 
+<img width="300" height="700" alt="Screenshot BlackJack Start Swe" src="https://github.com/user-attachments/assets/f64a8805-176f-40b8-861e-0f4a8954dda4" />
+<img width="300" height="700" alt="Screenshot BlackJack Stats Swe" src="https://github.com/user-attachments/assets/c81ff709-707d-4165-a1c6-8cabcf8c2383" />
+<img width="300" height="700" alt="Screenshot BlackJack Settings Swe" src="https://github.com/user-attachments/assets/069d96ae-a392-43dc-8040-f5c96ec23fdb" />
 
-  
+<img width="700" height="300" alt="Screenshot BlackJack Main Swe Land" src="https://github.com/user-attachments/assets/13b51531-f125-4ae0-addd-20ad41289727" />  
+<img width="700" height="300" alt="Screenshot BlackJack Settings Swe Land" src="https://github.com/user-attachments/assets/6f7e9929-1f96-40dd-b8f1-f5ad67da47ea" />  
 
 
