@@ -1,12 +1,7 @@
 package com.example.blackjack
 
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.blackjack.databinding.ActivityMainBinding
 import com.example.blackjack.databinding.ActivityStatsBinding
 
 class StatsActivity : AppCompatActivity() {
@@ -15,14 +10,13 @@ class StatsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityStatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
 
         val wins = prefs.getInt("wins", 0)
-        binding.tvVictorysCount.text = "$wins"
+        binding.tvVictoriesCount.text = "$wins"
 
         val losses = prefs.getInt("losses", 0)
         binding.tvLosesCount.text = "$losses"
@@ -40,7 +34,7 @@ class StatsActivity : AppCompatActivity() {
                 .putInt("ties", 0)
                 .apply()
 
-            binding.tvVictorysCount.text = "0"
+            binding.tvVictoriesCount.text = "0"
             binding.tvLosesCount.text = "0"
             binding.tvTieCount.text = "0"
         }

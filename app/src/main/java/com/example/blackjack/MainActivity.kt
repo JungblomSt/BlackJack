@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         settingsOverlay = findViewById(R.id.settingsOverlay)
 
         activateButtons()
@@ -41,7 +40,6 @@ class MainActivity : AppCompatActivity(){
         loadStats(prefs)
 
         newGame()
-
     }
 
     // Save the Stats when you come back from StatsActivity (if reset)

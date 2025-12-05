@@ -22,7 +22,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/amarante"
         android:text="BlackJack"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:fontFamily="@font/amarante"
         android:text="@string/dealer"
         android:textSize="20sp"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_dealer_text">
 
-        <include layout="@layout/cards_card"/>
+        <include layout="@layout/cards_card" />
 
     </LinearLayout>
 
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/amarante"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:text="@string/sum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/amarante"
         android:text="0"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
         android:fontFamily="@font/amarante"
         android:text="@string/player"
         android:textSize="20sp"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/amarante"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:text="@string/sum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +127,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/amarante"
         android:text="0"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -147,9 +147,9 @@
             android:id="@+id/btn_draw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/buttoncollor_main"
+            android:backgroundTint="@color/button_color_main"
             android:text="@string/draw"
-            android:textColor="@color/fontcolor_main"
+            android:textColor="@color/font_color_main"
             app:cornerRadius="8dp"
             app:elevation="6dp"
             app:strokeColor="@color/btn_stroke_color"
@@ -161,9 +161,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:backgroundTint="@color/buttoncollor_main"
+            android:backgroundTint="@color/button_color_main"
             android:text="@string/stand"
-            android:textColor="@color/fontcolor_main"
+            android:textColor="@color/font_color_main"
             app:cornerRadius="8dp"
             app:elevation="6dp"
             app:strokeColor="@color/btn_stroke_color"
@@ -176,7 +176,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/amarante"
         android:text="@string/result"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_new_game"
         app:layout_constraintEnd_toEndOf="parent"
@@ -189,9 +189,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/buttoncollor_main"
+        android:backgroundTint="@color/button_color_main"
         android:text="@string/new_game"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         app:cornerRadius="8dp"
         app:elevation="6dp"
         app:layout_constraintBottom_toTopOf="@id/btn_stat"
@@ -207,9 +207,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/buttoncollor_main"
+        android:backgroundTint="@color/button_color_main"
         android:text="@string/statistics"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         app:cornerRadius="8dp"
         app:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -225,6 +225,7 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/green"
         android:clickable="true"
+        android:contentDescription="@string/settings"
         android:src="@drawable/settings_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -251,6 +252,4 @@
         app:layout_constraintStart_toStartOf="parent">
 
     </FrameLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

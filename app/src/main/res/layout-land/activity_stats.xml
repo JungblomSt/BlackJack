@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/poker_backgruond_blue" />
+        app:srcCompat="@drawable/poker_background_blue" />
 
     <TextView
         android:id="@+id/tv_title_stats"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/amarante"
         android:text="BlackJack"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,12 +34,12 @@
 
 
     <TextView
-        android:id="@+id/tv_victorys"
+        android:id="@+id/tv_victories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/amarante"
-        android:text="@string/vinns"
-        android:textColor="@color/fontcolor_main"
+        android:text="@string/wins"
+        android:textColor="@color/font_color_main"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_loses"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,16 +47,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_victorys_count"
+        android:id="@+id/tv_victories_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/amarante"
         android:text="0"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="34sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_victorys"
-        app:layout_constraintTop_toTopOf="@+id/tv_victorys" />
+        app:layout_constraintStart_toEndOf="@+id/tv_victories"
+        app:layout_constraintTop_toTopOf="@+id/tv_victories" />
 
     <TextView
         android:id="@+id/tv_loses"
@@ -64,12 +64,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/amarante"
         android:text="@string/losses"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tv_victorys"
+        app:layout_constraintEnd_toEndOf="@+id/tv_victories"
         app:layout_constraintHorizontal_bias="0.814"
-        app:layout_constraintStart_toStartOf="@+id/tv_victorys"
+        app:layout_constraintStart_toStartOf="@+id/tv_victories"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -79,7 +79,7 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/amarante"
         android:text="0"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="34sp"
         app:layout_constraintStart_toEndOf="@+id/tv_loses"
         app:layout_constraintTop_toTopOf="@+id/tv_loses" />
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/amarante"
         android:text="@string/tie"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_loses"
@@ -105,7 +105,7 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/amarante"
         android:text="0"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         android:textSize="34sp"
         app:layout_constraintStart_toEndOf="@id/tv_tie"
         app:layout_constraintTop_toTopOf="@+id/tv_tie" />
@@ -116,9 +116,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/buttoncollor_main"
+        android:backgroundTint="@color/button_color_main"
         android:text="@string/back"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         app:cornerRadius="8dp"
         app:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -132,9 +132,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/buttoncollor_main"
+        android:backgroundTint="@color/button_color_main"
         android:text="@string/reset"
-        android:textColor="@color/fontcolor_main"
+        android:textColor="@color/font_color_main"
         app:cornerRadius="8dp"
         app:elevation="6dp"
 
