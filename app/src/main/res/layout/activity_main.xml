@@ -52,20 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_dealer_text">
 
         <include layout="@layout/cards_card"/>
-<!--        <TextView-->
-<!--            android:id="@+id/tv_dealer_card_1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:text="DealerCard1"-->
-<!--            android:textColor="@color/fontcolor_main" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_dealer_card_2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_marginStart="24dp"-->
-<!--            android:text="DealerCard2"-->
-<!--            android:textColor="@color/fontcolor_main"/>-->
     </LinearLayout>
 
     <TextView
@@ -119,24 +106,6 @@
 
         <include layout="@layout/cards_card"/>
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_player_card_1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:textColor="@color/fontcolor_main"-->
-<!--            android:text="PlayerCard1" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_player_card_2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_marginStart="24dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:textColor="@color/fontcolor_main"-->
-<!--            android:text="PlayerCard2"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/tv_player_card_1"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/tv_player_text" />-->
     </LinearLayout>
 
     <TextView
@@ -259,6 +228,18 @@
         android:src="@drawable/settings_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/settingsOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:visibility="gone"
+        android:clickable="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <FrameLayout
         android:id="@+id/settingsContainer"

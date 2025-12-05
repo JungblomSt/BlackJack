@@ -15,23 +15,6 @@ import com.example.blackjack.databinding.FragmentSettingsBinding
 import java.util.Locale
 
 class SettingsFragment : Fragment() {
-//    interface SettingsFragmentListener{
-//    }
-//    var owner: SettingsFragmentListener? = null
-//
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//
-//        try {
-//            owner = context as SettingsFragmentListener
-//            Log.i("SOUT", "Listener implemented in owner Activity")
-//        }catch (e: Exception){
-//            Log.i("SOUT", "Listener NOT implemented in owner Activity")
-//
-//        }
-//
-//    }
-
     private var _binding: FragmentSettingsBinding? = null
     val binding get() = _binding!!
     private val sharedViewModel: SharedViewModel by activityViewModels()
@@ -68,15 +51,16 @@ class SettingsFragment : Fragment() {
     }
 
     private fun removeSettingsFragment(){
+        requireActivity().findViewById<View>(R.id.settingsOverlay).visibility = View.GONE
+
         parentFragmentManager.beginTransaction()
             .remove(this)
             .commit()
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-//        owner = null
     }
 
 }

@@ -15,6 +15,7 @@ import com.google.android.material.card.MaterialCardView
 class MainActivity : AppCompatActivity(){
     lateinit var binding : ActivityMainBinding
     private val sharedViewModel: SharedViewModel by viewModels()
+    private lateinit var settingsOverlay: View
 
     val deck = Deck()
     var playerHand = mutableListOf<Card>()
@@ -25,13 +26,13 @@ class MainActivity : AppCompatActivity(){
     var lossesCount = 0
     var tieCount = 0
 
-    //TODO: Kommentering av koden
-    //TODO: Dealer visar baksidan av ett kort innan player är klar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        settingsOverlay = findViewById(R.id.settingsOverlay)
 
         activateButtons()
         observeShowCountSetting()
@@ -112,9 +113,25 @@ class MainActivity : AppCompatActivity(){
     }
     private fun startSettingsFragment() {
         val settingsFragment = SettingsFragment()
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.settingsContainer, settingsFragment, "settingsFragment")
-        transaction.commit()
+
+        settingsOverlay.visibility = View.VISIBLE
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.settingsContainer, settingsFragment, "settingsFragment")
+            .commit()
+//        val transaction = supportFragmentManager.beginTransaction()
+//        transaction.add(R.id.settingsContainer, settingsFragment, "settingsFragment")
+//        transaction.commit()
+    }
+    private fun closeSettingsFragment() {
+        settingsOverlay.visibility = View.GONE
+
+        val settingsFragment = supportFragmentManager.findFragmentByTag("settingsFragment")
+        if (settingsFragment != null) {
+            supportFragmentManager.beginTransaction()
+                .remove(settingsFragment)
+                .commit()
+        }
     }
 
     //---------------- Stats -------------------------//
@@ -188,7 +205,9 @@ class MainActivity : AppCompatActivity(){
         }
         binding.ibSettings.setOnClickListener {
             startSettingsFragment()
-
+        }
+        settingsOverlay.setOnClickListener {
+            closeSettingsFragment()
         }
     }
     private fun observeShowCountSetting() {
@@ -205,3 +224,7 @@ class MainActivity : AppCompatActivity(){
     }
 
 }
+
+// I have used AI for:
+// bugg fixes
+// SharedViewModel (I knew what I wanted but not how/where to write it)
