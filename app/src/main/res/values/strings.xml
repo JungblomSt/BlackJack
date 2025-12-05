@@ -4,11 +4,11 @@
     <string name="sum">Sum</string>
     <string name="player">Player:</string>
     <string name="draw">Draw</string>
-    <string name="stand">Stand</string>
+    <string name="stand">Hold</string>
     <string name="result">Result</string>
     <string name="new_game">New Game</string>
     <string name="statistics">Statistics</string>
-    <string name="vinns">Vinns</string>
+    <string name="vinns">Wins</string>
     <string name="losses">Losses</string>
     <string name="tie">Tie</string>
     <string name="back">Back</string>
