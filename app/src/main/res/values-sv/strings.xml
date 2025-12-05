@@ -9,18 +9,21 @@
     <string name="result">Resultat</string>
     <string name="new_game">Nytt spet</string>
     <string name="statistics">Statistik</string>
-    <string name="vinns">Vinster</string>
+    <string name="wins">Vinster</string>
     <string name="losses">Förluster</string>
     <string name="tie">Lika</string>
     <string name="back">Tillbaka</string>
     <string name="reset">Radera</string>
+    <string name="settings">Inställningar</string>
 
+    // Spel slut meddelanden
     <string name="you_busted">Du blev "tjock"! Givaren vann!</string>
     <string name="dealer_busted">Givaren blev "tjock"! Du vann!</string>
     <string name="you_win">Du vann!</string>
     <string name="dealer_wins">Givaren vann!</string>
     <string name="it_s_a_tie">Det blev lika!</string>
 
+    // Switchtext
     <string name="count_hand">Räkna hand</string>
     <string name="orientation">\u2194 / \u2195 </string>
 </resources>

@@ -18,8 +18,8 @@
     <color name="pink">#EE00FF</color>
     <color name="yellow">#F8C304</color>
 
-    <color name="fontcolor_main">#FFFFFFFF</color>
-    <color name="buttoncollor_main">#FF000000</color>
+    <color name="font_color_main">#FFFFFFFF</color>
+    <color name="button_color_main">#FF000000</color>
 
     <color name="btn_stroke_color">#9c2f2f</color>
 </resources>
