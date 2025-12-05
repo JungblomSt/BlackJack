@@ -136,8 +136,7 @@ class MainActivity : AppCompatActivity(){
 
     //---------------- Stats -------------------------//
     private fun saveStats() {
-        val prefs = getSharedPreferences("blackjack_stats", MODE_PRIVATE)
-        prefs.edit()
+        getSharedPreferences("blackjack_stats", MODE_PRIVATE).edit()
             .putInt("wins", winCount)
             .putInt("losses", lossesCount)
             .putInt("ties", tieCount)
