@@ -46,9 +46,13 @@ class SettingsFragment : Fragment() {
                 requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             }
         }
+
+        sharedViewModel.textVisible.observe(viewLifecycleOwner) { visible ->
+            binding.switchHand.isChecked = !visible
+        }
         binding.switchHand.setOnCheckedChangeListener { _, isChecked ->
             sharedViewModel.setTextVisible(!isChecked)
-            }
+        }
     }
 
     private fun removeSettingsFragment(){
