@@ -35,8 +35,9 @@ class SettingsFragment : Fragment() {
             removeSettingsFragment()
         }
 
-        val orientation = requireActivity().requestedOrientation
-        binding.switchLand.isChecked = orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        //took help by AI to make this work
+        val orientation = resources.configuration.orientation
+        binding.switchLand.isChecked = orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
 
         binding.switchLand.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked){
